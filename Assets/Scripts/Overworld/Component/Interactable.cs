@@ -12,13 +12,13 @@ public class Interactable : MonoBehaviour
         gameObject.tag = "Interactable";
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             InteractableMessageHub.OnInteractableFoundPlayer?.Invoke(this);
     }
     
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             InteractableMessageHub.OnInteractableLostPlayer?.Invoke(this);

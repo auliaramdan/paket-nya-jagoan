@@ -48,6 +48,9 @@ TagManager:
   - name: Building
     uniqueID: 1046334265
     locked: 0
+  - name: Player
+    uniqueID: 2056338339
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

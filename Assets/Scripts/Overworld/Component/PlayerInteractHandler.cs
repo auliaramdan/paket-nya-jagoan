@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerInteractHandler : MonoBehaviour
 {
     [SerializeField]
@@ -59,7 +58,7 @@ public class PlayerInteractHandler : MonoBehaviour
 
     public void InteractCallback(InputAction.CallbackContext obj)
     {
-        if (obj.canceled)
+        if (!obj.performed)
             return;
         
         if (_registeredInteractables.Count <= 0)

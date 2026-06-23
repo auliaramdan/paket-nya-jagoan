@@ -3,19 +3,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMovementHandler : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 5f;
     
     private Vector2 _moveDirection = Vector2.zero;
-    private CharacterController _characterController;
+    private Rigidbody2D _rb2D;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _characterController = GetComponent<CharacterController>();
+        _rb2D = GetComponent<Rigidbody2D>();
     }
 
     public void UpdateMoveDirection(InputAction.CallbackContext ctx)
@@ -27,13 +26,12 @@ public class CharacterMovementHandler : MonoBehaviour
         }
         else if (ctx.canceled)
         {
-            _moveDirection = Vector3.zero;
+            _moveDirection = Vector2.zero;
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        // if (_moveDirection.x != 0 || _moveDirection.z != 0)
-            _characterController.Move(_moveDirection * (moveSpeed * Time.deltaTime));
+        _rb2D.MovePosition(_rb2D.position + _moveDirection * (moveSpeed * Time.fixedDeltaTime));
     }
 }
