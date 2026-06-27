@@ -22,7 +22,10 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
+          buildName: Paketnya Jagoan
+      - name: Delete burst file
+        run: rm -r build/Paketnya Jagoan/Paketnya Jagoan_BackUpThisFolder_ButDontShipItWithYourGame
       - uses: actions/upload-artifact@v4
         with:
-          name: Build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          name: Build-Paketnya Jagoan
+          path: build/Paketnya Jagoan
