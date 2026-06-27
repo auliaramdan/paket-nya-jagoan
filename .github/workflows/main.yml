@@ -14,7 +14,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-Windows
+          key: Library-Windows-N
       - uses: game-ci/unity-builder@main
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
