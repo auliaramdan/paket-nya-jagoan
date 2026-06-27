@@ -15,7 +15,7 @@ jobs:
         with:
           path: Library
           key: Library-Windows
-      - uses: game-ci/unity-builder@v4
+      - uses: game-ci/unity-builder@main
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -23,7 +23,7 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
       - name: Delete burst file
-        run: rm -r build/StandaloneWindows64/Paketnya Jagoan_BackUpThisFolder_ButDontShipItWithYourGame
+        run: rm -r build/StandaloneWindows64/StandaloneWindows64_BackUpThisFolder_ButDontShipItWithYourGame
       - uses: actions/upload-artifact@v4
         with:
           name: Build-StandaloneWindows64
