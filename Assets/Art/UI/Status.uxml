@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Art/UI/player-battle-status.uss?fileID=7433441132597879392&amp;guid=6e55c6695a17d1d4da27b04a976c96a8&amp;type=3#player-battle-status"/>
+    <ui:VisualElement name="container" data-source-type="BattleEntityScriptableObject, Assembly-CSharp" style="flex-grow: 1; position: absolute; align-items: stretch; justify-content: space-between; align-self: stretch;">
+        <ui:ProgressBar value="47.2" name="health-bar"/>
+        <ui:VisualElement name="status-container" style="flex-grow: 1; flex-direction: row; align-items: stretch; align-self: stretch; justify-content: center;">
+            <ui:VisualElement name="atk-status" class="status-container" style="flex-grow: 1; flex-direction: column; max-width: 30%;">
+                <ui:Image style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Icons/Icon_05.png?fileID=21300000&amp;guid=23450567bedfb472eb6f8efd4ad515da&amp;type=3#Icon_05&quot;); aspect-ratio: 1; -unity-background-scale-mode: scale-to-fit; background-position-x: center; background-position-y: center; min-width: 100%; min-height: 100%;"/>
+                <ui:Label text="80" name="atk-status-label" class="status-label" style="-unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="def-status" class="status-container" style="flex-grow: 1; flex-direction: column; max-width: 30%;">
+                <ui:Image style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Icons/Icon_06.png?fileID=21300000&amp;guid=a1ce5e93205074fa0b03cc1070dbdeca&amp;type=3#Icon_06&quot;); aspect-ratio: 1; min-width: 100%; min-height: 100%;"/>
+                <ui:Label text="80" name="def-status-label" class="status-label" style="-unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="spd-status" class="status-container" style="flex-grow: 1; flex-direction: column; max-width: 30%;">
+                <ui:Image style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Icons/Icon_07.png?fileID=21300000&amp;guid=fbee8984e8c234190b7c5f6e10dbd4a7&amp;type=3#Icon_07&quot;); aspect-ratio: 1; min-width: 100%; min-height: 100%;"/>
+                <ui:Label text="80" name="spd-status-label" class="status-label" style="-unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

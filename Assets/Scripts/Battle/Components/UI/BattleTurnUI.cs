@@ -17,12 +17,12 @@ public class BattleTurnUI : MonoBehaviour
     private List<Image> _playerEntityPool = new();
     private List<Image> _enemyEntityPool = new();
 
-    public void InitializeEntityList(List<BattleEntityScriptableObject> entities)
+    public void InitializeEntityList(List<BattleEntity> entities)
     {
         StartCoroutine(SetEntityListCoroutine(entities));
     }
 
-    private IEnumerator SetEntityListCoroutine(List<BattleEntityScriptableObject> entities)
+    private IEnumerator SetEntityListCoroutine(List<BattleEntity> entities)
     {
         var spacing = ((RectTransform)entityImg.transform).rect.width + 10f;
         var parentWidth = ((RectTransform)playerEntityTurnParent.transform).rect.width;
@@ -43,18 +43,18 @@ public class BattleTurnUI : MonoBehaviour
                     startingPos, 
                     targetSpacing - spacing * i));
             
-            SetEntitySprite(entities[i], i);
+            SetEntitySprite(entities[i].EntityData, i);
             
             yield return new WaitForSeconds(.2f);
         }
     }
 
-    public void AdvanceTurnUI(List<BattleEntityScriptableObject> entities)
+    public void AdvanceTurnUI(List<BattleEntity> entities)
     {
         StartCoroutine(AdvanceTurnUICoroutine(entities));
     }
 
-    private IEnumerator AdvanceTurnUICoroutine(List<BattleEntityScriptableObject> entities)
+    private IEnumerator AdvanceTurnUICoroutine(List<BattleEntity> entities)
     {
         var spacing = ((RectTransform)entityImg.transform).rect.width + 10f;
         var target = playerEntityTurnParent.localPosition;
@@ -70,7 +70,7 @@ public class BattleTurnUI : MonoBehaviour
         
         for (var i = 0; i < entities.Count; i++)
         {
-            SetEntitySprite(entities[i], i);
+            SetEntitySprite(entities[i].EntityData, i);
         }
     }
 
@@ -84,17 +84,18 @@ public class BattleTurnUI : MonoBehaviour
 
     private void SetEntitySprite(BattleEntityScriptableObject entity, int index)
     {
-        if (entity.Side == EntitySide.Ally)
+        switch (entity.Side)
         {
-            _playerEntityPool[index].sprite = entity.Sprite;
-            _playerEntityPool[index].color = Color.white;
-            _enemyEntityPool[index].color = Color.clear;
-        }
-        else
-        {
-            _enemyEntityPool[index].sprite = entity.Sprite;
-            _enemyEntityPool[index].color = Color.white;
-            _playerEntityPool[index].color = Color.clear;
+            case EntitySide.Ally:
+                _playerEntityPool[index].sprite = entity.Sprite;
+                _playerEntityPool[index].color = Color.white;
+                _enemyEntityPool[index].color = Color.clear;
+                break;
+            case EntitySide.Enemy:
+                _enemyEntityPool[index].sprite = entity.Sprite;
+                _enemyEntityPool[index].color = Color.white;
+                _playerEntityPool[index].color = Color.clear;
+                break;
         }
     }
 }

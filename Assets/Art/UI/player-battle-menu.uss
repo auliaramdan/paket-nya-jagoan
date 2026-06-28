@@ -1,0 +1,37 @@
+:root {
+}
+
+.icon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    bottom: 25%;
+    aspect-ratio: 1;
+}
+
+.icon-label {
+    -unity-font-style: normal;
+    bottom: -55%;
+    -unity-font-definition: url("project://database/Assets/Fungus/Fonts/Amaranth/Amaranth-BoldItalic.otf?fileID=12800000&guid=30083fe2d35a6490b8f1e57e0d830527&type=3#Amaranth-BoldItalic");
+    font-size: 32px;
+}
+
+.icon-label:disabled {
+    -unity-font-style: normal;
+    bottom: -55%;
+    -unity-font-definition: url("project://database/Assets/Fungus/Fonts/Amaranth/Amaranth-BoldItalic.otf?fileID=12800000&guid=30083fe2d35a6490b8f1e57e0d830527&type=3#Amaranth-BoldItalic");
+    font-size: 32px;
+    -unity-background-image-tint-color: rgb(142, 142, 142);
+}
+
+.unity-button {
+}
+
+.unity-button:hover {
+    -unity-background-image-tint-color: rgb(212, 212, 212);
+}
+
+.unity-button:active {
+    -unity-background-image-tint-color: rgb(123, 123, 123);
+}

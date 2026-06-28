@@ -9,8 +9,7 @@ public class AnimationAction : BaseAction
     {        
         base.StartAction();
 
-        var animator = ownerEntity.GetComponent<Animator>();
-        animator.Play(targetAnimationName);
+        ownerEntity.EntityAnimator.Play(targetAnimationName);
         isFinished = true;
     }
 }

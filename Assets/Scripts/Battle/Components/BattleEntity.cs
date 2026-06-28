@@ -1,62 +1,95 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum EntitySide
-{
-    Ally,
-    Enemy
-}
-
+[RequireComponent(typeof(Animator))]
 public class BattleEntity : MonoBehaviour
 {
-    public BattleEntityScriptableObject Data => data;
+    public Action<TurnDetail> OnTurnStart;
+    public Action<TurnDetail> OnTurnEnd;
+    
+    [CreateProperty]
+    public float CurrentHealth => currentHealth;
+    [CreateProperty]
+    public int Atk => atk;
+    [CreateProperty]
+    public int Def => def;
+    [CreateProperty]
+    public int Spd => spd;
+
+    public Animator EntityAnimator => _animator;
+
+    public BattleEntityScriptableObject EntityData => data;
     
     [SerializeField]
     private BattleEntityScriptableObject data;
-
     [SerializeField]
-    private UnityEvent onTurnStart, onTurnEnd;
+    private float currentHealth;
+    [SerializeField]
+    private int atk, def, spd;
 
-    private List<BattleActionManager> _actionPool = new();
+    private Animator _animator;
+    private readonly Dictionary<BattleActionManager, BattleActionManager> _actionPool = new();
 
-    private void OnEnable()
+    public void Initialize(BattleEntityScriptableObject newData)
     {
-        data.OnTurnStart += StartTurn;
-        data.OnTurnEnd += EndTurn;
-        data.OnActionSelected += OnActionSelected;
+        data = newData;
     }
 
-    private void OnDisable()
+    private void Start()
     {
-        data.OnTurnStart -= StartTurn;
-        data.OnTurnEnd -= EndTurn;
-        data.OnActionSelected -= OnActionSelected;
+        _animator = GetComponent<Animator>();
+        _animator.runtimeAnimatorController = data.AnimatorController;
+        
+        currentHealth = data.MaxHp;
+        atk = EntityData.DefaultAtk;
+        def = EntityData.DefaultDef;
+        spd = EntityData.DefaultSpd;
     }
 
-    private void StartTurn()
+    public void OnActionSelected(BattleActionManager requestedAction, BattleEntity target)
     {
-        onTurnStart?.Invoke();
-    }
-
-    private void EndTurn()
-    {
-        onTurnEnd?.Invoke();
-    }
-    
-    private void OnActionSelected(BattleActionManager requestedAction, BattleEntity target)
-    {
-        var action = _actionPool.Find(x => x == requestedAction);
-
-        if (action == null)
+        if (!_actionPool.TryGetValue(requestedAction, out var action))
         {
             action = Instantiate(requestedAction, transform);
             action.Initialize(this, target);
-            _actionPool.Add(action);
+            _actionPool.Add(requestedAction, action);
         }
 
+        StartCoroutine(StartActionCoroutine(action));
+    }
+
+    private IEnumerator StartActionCoroutine(BattleActionManager action)
+    {
         action.StartActionSequence();
+
+        while (!action.IsFinished)
+            yield return null;
+        
+        OnTurnEnd?.Invoke(new TurnDetail{consecutiveTurnCount = action.ActionCost});
+    }
+
+    public void ModifyStats(float newHealth, int newAtk, int newDef, int newSpd)
+    {
+        currentHealth += newHealth;
+        
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
+            Death();
+        }
+        
+        atk += newAtk;
+        def += newDef;
+        spd += newSpd;
+    }
+
+    private void Death()
+    {
+        
     }
 }

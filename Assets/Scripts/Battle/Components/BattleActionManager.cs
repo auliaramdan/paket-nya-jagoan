@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class BattleActionManager : MonoBehaviour
 {
+    public bool IsFinished { get; private set; }
+    public int ActionCost => actionCost;
+    public bool RequireTarget => requireTarget;
+
+    [SerializeField]
+    private int actionCost = 1;
+    [SerializeField]
+    private bool requireTarget = true;
+    
     [SerializeField]
     private List<BaseAction> actions = new();
 
@@ -22,6 +31,7 @@ public class BattleActionManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void StartActionSequence()
     {
+        IsFinished = false;
         foreach (var action in actions)
         {
             action.Init(owner, target);
@@ -43,7 +53,6 @@ public class BattleActionManager : MonoBehaviour
                 yield return null;
             }
         }
-        
-        owner.Data.OnTurnEnd?.Invoke();
+        IsFinished = true;
     }
 }
