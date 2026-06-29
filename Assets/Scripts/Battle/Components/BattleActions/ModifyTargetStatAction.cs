@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class ModifyTargetStatAction : BaseAction
 {
     public int atk;
@@ -12,5 +10,12 @@ public class ModifyTargetStatAction : BaseAction
         
         targetEntity.ModifyStats(0, atk, def, spd);
         isFinished = true;
+    }
+
+    public override void DurationFinished()
+    {
+        base.DurationFinished();
+        
+        targetEntity.ModifyStats(0, -atk, -def, -spd);
     }
 }

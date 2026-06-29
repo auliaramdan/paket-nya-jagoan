@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,16 +12,16 @@ public class BattleEntityAI : MonoBehaviour
 
     private void OnEnable()
     {
-        BattleBootstrap.OnBattleStart += OnEnemyBattleStart;
+        BattleManager.OnBattleStart += OnEnemyBattleStart;
         
         _owner ??= GetComponent<BattleEntity>();
         _owner.OnTurnStart += OnTurnStart;
     }
 
-    private void OnEnemyBattleStart(BattleEntity[] obj)
+    private void OnEnemyBattleStart(List<BattleEntity> obj)
     {
         _validTargets = obj.Where(o => o.EntityData.Side == EntitySide.Ally).ToArray();
-        BattleBootstrap.OnBattleStart -= OnEnemyBattleStart;
+        BattleManager.OnBattleStart -= OnEnemyBattleStart;
     }
 
     private void OnDisable()

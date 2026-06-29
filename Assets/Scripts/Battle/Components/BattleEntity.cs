@@ -1,16 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using NaughtyAttributes;
 using Unity.Properties;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 public class BattleEntity : MonoBehaviour
 {
     public Action<TurnDetail> OnTurnStart;
     public Action<TurnDetail> OnTurnEnd;
+    public Action<BattleEntity> OnEntityDied;
     
     [CreateProperty]
     public float CurrentHealth => currentHealth;
@@ -24,6 +23,7 @@ public class BattleEntity : MonoBehaviour
     public Animator EntityAnimator => _animator;
 
     public BattleEntityScriptableObject EntityData => data;
+    public Dictionary<BattleActionManager, BattleActionManager> ActionPool => _actionPool;
     
     [SerializeField]
     private BattleEntityScriptableObject data;
@@ -56,10 +56,10 @@ public class BattleEntity : MonoBehaviour
         if (!_actionPool.TryGetValue(requestedAction, out var action))
         {
             action = Instantiate(requestedAction, transform);
-            action.Initialize(this, target);
             _actionPool.Add(requestedAction, action);
         }
-
+        
+        action.Initialize(this, target);
         StartCoroutine(StartActionCoroutine(action));
     }
 
@@ -80,16 +80,12 @@ public class BattleEntity : MonoBehaviour
         if (currentHealth < 0)
         {
             currentHealth = 0;
-            Death();
+            OnEntityDied?.Invoke(this);
+            return;
         }
         
         atk += newAtk;
         def += newDef;
         spd += newSpd;
-    }
-
-    private void Death()
-    {
-        
     }
 }

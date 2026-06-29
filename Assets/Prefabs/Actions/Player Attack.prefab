@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageTargetAction
   waitUntilFinished: 0
-  baseDamage: 4
+  baseDamage: 100
 --- !u!1 &6947414791128937064
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleActionManager
   actionCost: 1
+  actionDuration: 0
+  actionCooldown: 0
+  requireTarget: 1
   actions:
   - {fileID: 1263660271096987788}
   - {fileID: 7390730902257098332}

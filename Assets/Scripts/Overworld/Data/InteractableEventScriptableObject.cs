@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "InteractableEvent", menuName = "ScriptableObjects/InteractableEvent")]
+[CreateAssetMenu(fileName = "InteractableEvent", menuName = "Scriptable Objects/InteractableEvent")]
 public class InteractableEventScriptableObject : ScriptableObject
 {
     public Action BroadcastToReceiver;
     public Action ReplyFromReceiver;
-    
     
     public void Broadcast()
     {

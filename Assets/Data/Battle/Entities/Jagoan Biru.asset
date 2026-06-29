@@ -21,4 +21,8 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: aa1112b337436413a9e3f0f07d8475c2, type: 2}
   basicAttack: {fileID: 44342968056619128, guid: 047957c9a8c7890448a63ca9b930445e, type: 3}
   basicDefense: {fileID: 7831296918575391272, guid: dcc12be6f1c361446a6d110d3c25971f, type: 3}
-  skills: []
+  skills:
+  - actionName: SPD UP
+    actionManager: {fileID: 7831296918575391272, guid: 593234b8e24c6bc4993624de0a7b5fa1, type: 3}
+  - actionName: Big Bonk
+    actionManager: {fileID: 44342968056619128, guid: 4dbd4c956fa94e34ea5c4d8f5be4acd3, type: 3}

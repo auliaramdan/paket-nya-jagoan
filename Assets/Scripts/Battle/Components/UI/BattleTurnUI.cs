@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Fungus.DentedPixel;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using NaughtyAttributes;
 
 public class BattleTurnUI : MonoBehaviour
 {

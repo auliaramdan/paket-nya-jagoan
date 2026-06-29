@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using NaughtyAttributes;
 using UnityEngine;
 
 public class BattleTurnManager : MonoBehaviour
@@ -10,18 +9,18 @@ public class BattleTurnManager : MonoBehaviour
     [SerializeField]
     private BattleTurnUI battleTurnUI;
 
-    private BattleEntity[] _battleEntities;
+    private List<BattleEntity> _battleEntities = new();
     private List<BattleEntity> _entitiesTurn = new();
     private List<BattleEntityTurn> _battleEntityTurns;
 
-    public void Initialize(BattleEntity[] entities)
+    public void Initialize(List<BattleEntity> entities)
     {
         _battleEntities = entities;
     }
     
     private IEnumerator Start()
     {
-        _battleEntityTurns = _battleEntities.Select(battleEntity => new BattleEntityTurn { Entity = battleEntity, TurnTime = battleEntity.Spd, EntitySpd = battleEntity.Spd}).ToList();
+        _battleEntityTurns = _battleEntities.Select(battleEntity => new BattleEntityTurn { Entity = battleEntity, TurnTime = 1f/battleEntity.Spd * 10}).ToList();
         
         for (int i = 0; i < 10; i++)
         {
@@ -57,7 +56,7 @@ public class BattleTurnManager : MonoBehaviour
             {
                 added = true;
                 _entitiesTurn.Add(entityTurn.Entity);
-                entityTurn.TurnTime = entityTurn.EntitySpd;
+                entityTurn.TurnTime = 1f/entityTurn.Entity.Spd * 10;
                 continue;
             }
             
@@ -86,6 +85,13 @@ public class BattleTurnManager : MonoBehaviour
         _entitiesTurn[0].OnTurnStart?.Invoke(new TurnDetail{consecutiveTurnCount = GetConsecutiveTurnAmount(_entitiesTurn[0])});
     }
 
+    public void RemoveEntity(BattleEntity entity)
+    {
+        _battleEntities.Remove(entity);
+        _battleEntityTurns.Remove(_battleEntityTurns.FirstOrDefault(e => e.Entity == entity));
+        AdvanceTurn(new TurnDetail(){consecutiveTurnCount = 10});
+    }
+
     private int GetConsecutiveTurnAmount(BattleEntity entity)
     {
         if (_entitiesTurn[0] != entity)
@@ -104,7 +110,6 @@ public class BattleTurnManager : MonoBehaviour
     {
         public BattleEntity Entity;
         public float TurnTime;
-        public int EntitySpd;
     }
 }
 

@@ -16,7 +16,7 @@ public class OverworldToBattleSceneHandler : MonoBehaviour
     private List<BattleEntityScriptableObject> battleParticipants = new();
 
     [Button]
-    public void MoveToBattleScene()
+    public void MoveToNewScene()
     {
         DontDestroyOnLoad(gameObject);
 

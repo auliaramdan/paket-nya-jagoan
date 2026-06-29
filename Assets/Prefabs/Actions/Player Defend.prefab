@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleActionManager
   actionCost: 1
+  actionDuration: 2
+  actionCooldown: 0
   requireTarget: 0
   actions:
   - {fileID: 4569785150452538812}

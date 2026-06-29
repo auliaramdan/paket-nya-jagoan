@@ -12,7 +12,14 @@ public class ModifyOwnStatAction : BaseAction
     {
         base.StartAction();
         
-        ownerEntity.ModifyStats(health, atk, def, spd);
+        ownerEntity.ModifyStats(0, atk, def, spd);
         isFinished = true;
+    }
+
+    public override void DurationFinished()
+    {
+        base.DurationFinished();
+        
+        ownerEntity.ModifyStats(0, -atk, -def, -spd);
     }
 }

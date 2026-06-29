@@ -25,13 +25,17 @@
     -unity-background-image-tint-color: rgb(142, 142, 142);
 }
 
-.unity-button {
+.action-button {
+    justify-content: space-around;
+    align-self: stretch;
 }
 
-.unity-button:hover {
+.action-button:hover {
     -unity-background-image-tint-color: rgb(212, 212, 212);
 }
 
-.unity-button:active {
+.action-button:active {
     -unity-background-image-tint-color: rgb(123, 123, 123);
 }
+
+

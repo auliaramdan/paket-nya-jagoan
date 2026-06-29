@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleEntityUI
   uiDocument: {fileID: 0}
+  skillVisualAsset: {fileID: 9197481963319205126, guid: 4b57cb34902433a49ac31170a659cbef, type: 3}
   skillPanel: {fileID: 0}
-  target: {fileID: 0}
 --- !u!1 &4371381223649557795
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,5 +307,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FitButton
   uiDocument: {fileID: 5364445595810682053}
   target: {fileID: 2764659616211726982}
-  offset: {x: 0.6, y: -1.6, z: 0}
+  offset: {x: 0.6, y: -1.1, z: 0}
   pos: {x: 11.333967, y: 25.4, z: 10}
