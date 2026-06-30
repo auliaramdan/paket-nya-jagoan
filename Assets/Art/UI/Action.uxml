@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Art/UI/player-battle-menu.uss?fileID=7433441132597879392&amp;guid=94109c1fdd368a949814348cc95e5191&amp;type=3#player-battle-menu"/>
+    <ui:VisualElement name="container" style="flex-grow: 1; flex-direction: column; align-items: auto; justify-content: space-around; position: absolute; width: 8%; margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; padding-right: 0; padding-left: 0; margin-right: 0; margin-left: 0; align-content: auto; align-self: auto;">
+        <ui:Button text="" name="attack" class="action-button" style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Buttons/BigBlueButton_Regular.png?fileID=21300000&amp;guid=74195b8c61865492fb1d0a56e808bec3&amp;type=3#BigBlueButton_Regular&quot;); background-repeat: no-repeat no-repeat; -unity-background-scale-mode: scale-to-fit; -unity-slice-type: sliced; background-color: rgba(188, 188, 188, 0); border-bottom-width: 0; border-left-width: 0; border-top-width: 0; border-right-width: 0; aspect-ratio: 1;">
+            <ui:Image class="icon" style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Icons/Icon_05.png?fileID=21300000&amp;guid=23450567bedfb472eb6f8efd4ad515da&amp;type=3#Icon_05&quot;); aspect-ratio: 1; position: absolute; top: 25%; left: 25%; right: 25%; bottom: 25%;"/>
+            <ui:Label text="Attack" class="icon-label" style="color: rgb(161, 46, 46);"/>
+        </ui:Button>
+        <ui:Button name="defend" class="action-button" style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Buttons/BigBlueButton_Regular.png?fileID=21300000&amp;guid=74195b8c61865492fb1d0a56e808bec3&amp;type=3#BigBlueButton_Regular&quot;); background-color: rgba(188, 188, 188, 0); -unity-background-scale-mode: scale-to-fit; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; aspect-ratio: 1; left: 60%;">
+            <ui:Image class="icon" style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Icons/Icon_06.png?fileID=21300000&amp;guid=a1ce5e93205074fa0b03cc1070dbdeca&amp;type=3#Icon_06&quot;); aspect-ratio: 1;"/>
+            <ui:Label text="Defend" class="icon-label" style="color: rgb(29, 33, 164);"/>
+        </ui:Button>
+        <ui:Button name="skill" class="action-button" style="top: 0%; background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Buttons/BigBlueButton_Regular.png?fileID=21300000&amp;guid=74195b8c61865492fb1d0a56e808bec3&amp;type=3#BigBlueButton_Regular&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; aspect-ratio: 1;">
+            <ui:Image class="icon" style="aspect-ratio: 1; background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Icons/Icon_07.png?fileID=21300000&amp;guid=fbee8984e8c234190b7c5f6e10dbd4a7&amp;type=3#Icon_07&quot;);"/>
+            <ui:Label text="Skill" class="icon-label" style="color: rgb(0, 0, 0);"/>
+        </ui:Button>
+        <ui:ListView name="skill-list" item-template="project://database/Assets/Art/UI/Skill.uxml?fileID=9197481963319205126&amp;guid=4b57cb34902433a49ac31170a659cbef&amp;type=3#Skill" allow-add="false" allow-remove="false" fixed-item-height="50" virtualization-method="FixedHeight" style="min-height: 100%; min-width: 200%; position: absolute; left: 150%; display: flex; visibility: hidden;"/>
+    </ui:VisualElement>
+</ui:UXML>

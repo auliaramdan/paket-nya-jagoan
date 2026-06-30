@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea3e7287b5126f44bcad978140fc7b8, type: 3}
+  m_Name: Jagoan Biru
+  m_EditorClassIdentifier: Assembly-CSharp::BattleEntityScriptableObject
+  maxHp: 100
+  defaultAtk: 5
+  defaultDef: 5
+  defaultSpd: 5
+  sprite: {fileID: 21300000, guid: 2334fa2b3b6b3492281b0993c123cfac, type: 3}
+  side: 0
+  animatorController: {fileID: 9100000, guid: aa1112b337436413a9e3f0f07d8475c2, type: 2}
+  basicAttack: {fileID: 44342968056619128, guid: 047957c9a8c7890448a63ca9b930445e, type: 3}
+  basicDefense: {fileID: 7831296918575391272, guid: dcc12be6f1c361446a6d110d3c25971f, type: 3}
+  skills:
+  - actionName: SPD UP
+    actionManager: {fileID: 7831296918575391272, guid: 593234b8e24c6bc4993624de0a7b5fa1, type: 3}
+  - actionName: Big Bonk
+    actionManager: {fileID: 44342968056619128, guid: 4dbd4c956fa94e34ea5c4d8f5be4acd3, type: 3}

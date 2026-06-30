@@ -24,4 +24,9 @@ public abstract class BaseAction : MonoBehaviour
     {
         isFinished = false;
     }
+
+    public virtual void DurationFinished()
+    {
+        
+    }
 }

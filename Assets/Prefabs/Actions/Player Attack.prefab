@@ -183,6 +183,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReturnToInitialAction
   waitUntilFinished: 0
+--- !u!1 &5022202553971457346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7731144285493643542}
+  - component: {fileID: 8814512682829103024}
+  m_Layer: 0
+  m_Name: Damage Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7731144285493643542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022202553971457346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1586713466467595968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8814512682829103024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022202553971457346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4314aef28801d904cb905b391e863757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageTargetAction
+  waitUntilFinished: 0
+  baseDamage: 5
 --- !u!1 &6947414791128937064
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +264,7 @@ Transform:
   - {fileID: 2055740717178663736}
   - {fileID: 5834992344042020474}
   - {fileID: 2125380240701775477}
+  - {fileID: 7731144285493643542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &44342968056619128
@@ -232,17 +279,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170ba66b33494d44f9d51cfaeca90222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleActionManager
+  actionCost: 1
+  actionDuration: 0
+  actionCooldown: 0
+  requireTarget: 1
   actions:
   - {fileID: 1263660271096987788}
   - {fileID: 7390730902257098332}
   - {fileID: 1475983324885185224}
   - {fileID: 7962291952624560906}
   - {fileID: 2831251049697391217}
+  - {fileID: 8814512682829103024}
   executions:
   - {fileID: 1263660271096987788}
   - {fileID: 7390730902257098332}
   - {fileID: 1475983324885185224}
   - {fileID: 7390730902257098332}
+  - {fileID: 8814512682829103024}
   - {fileID: 2831251049697391217}
   - {fileID: 7962291952624560906}
   owner: {fileID: 0}

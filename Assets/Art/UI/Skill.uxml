@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Image style="background-image: url(&quot;project://database/Assets/Tiny%20Swords/UI%20Elements/Ribbons/BigRibbons%201.png?fileID=21300000&amp;guid=f22147a613a7b49d6a16e1a72f337216&amp;type=3#BigRibbons 1&quot;); -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; -unity-slice-type: sliced; -unity-background-scale-mode: scale-and-crop; -unity-slice-scale: 0.2px; justify-content: space-around; flex-grow: 1;">
+        <ui:Label text="Label" style="-unity-text-align: middle-center; -unity-font-definition: url(&quot;project://database/Assets/Fungus/Fonts/Amaranth/Amaranth-BoldItalic.otf?fileID=12800000&amp;guid=30083fe2d35a6490b8f1e57e0d830527&amp;type=3#Amaranth-BoldItalic&quot;); flex-grow: 1; font-size: 30px; flex-shrink: 1; color: rgb(255, 255, 255);"/>
+    </ui:Image>
+</ui:UXML>
