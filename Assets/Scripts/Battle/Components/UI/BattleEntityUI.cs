@@ -115,7 +115,6 @@ public class BattleEntityUI : MonoBehaviour
         _skillListView.bindItem = (element, i) =>
         {
             element.enabledSelf = _owner.EntityData.Skills[i].actionManager.ActionCost <= _consecutiveTurnCount;
-            Debug.Log(_consecutiveTurnCount);
             
             if (_owner.ActionPool.TryGetValue(_owner.EntityData.Skills[i].actionManager, out var cooldown))
                 element.enabledSelf = cooldown.CurrentCooldown <= 0 && element.enabledSelf;
